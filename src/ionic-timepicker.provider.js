@@ -138,7 +138,9 @@ angular.module('ionic-timepicker.provider', [])
             } else {
               totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
             }
-            $scope.mainObj.callback(totalSec);
+            if (typeof $scope.mainObj.callback === 'function') {
+              $scope.mainObj.callback(totalSec);
+            }
             return totalSec;
           }
         });
